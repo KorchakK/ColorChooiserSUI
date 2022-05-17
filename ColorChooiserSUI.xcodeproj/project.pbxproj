@@ -11,6 +11,8 @@
 		4433BD442833EE7A00451323 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433BD432833EE7A00451323 /* ContentView.swift */; };
 		4433BD462833EE7D00451323 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4433BD452833EE7D00451323 /* Assets.xcassets */; };
 		4433BD492833EE7D00451323 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4433BD482833EE7D00451323 /* Preview Assets.xcassets */; };
+		447BBE2C283431BA00D83304 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE2B283431BA00D83304 /* SliderView.swift */; };
+		447BBE2E2834393600D83304 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BBE2D2834393600D83304 /* ColorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4433BD432833EE7A00451323 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4433BD452833EE7D00451323 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4433BD482833EE7D00451323 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		447BBE2B283431BA00D83304 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		447BBE2D2834393600D83304 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				4433BD412833EE7A00451323 /* ColorChooiserSUIApp.swift */,
 				4433BD432833EE7A00451323 /* ContentView.swift */,
+				447BBE2D2834393600D83304 /* ColorView.swift */,
+				447BBE2B283431BA00D83304 /* SliderView.swift */,
 				4433BD452833EE7D00451323 /* Assets.xcassets */,
 				4433BD472833EE7D00451323 /* Preview Content */,
 			);
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				447BBE2E2834393600D83304 /* ColorView.swift in Sources */,
+				447BBE2C283431BA00D83304 /* SliderView.swift in Sources */,
 				4433BD442833EE7A00451323 /* ContentView.swift in Sources */,
 				4433BD422833EE7A00451323 /* ColorChooiserSUIApp.swift in Sources */,
 			);
