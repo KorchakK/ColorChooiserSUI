@@ -9,8 +9,13 @@ import SwiftUI
 
 struct SliderView: View {
     
+    @FocusState var focusedField: Field?
+    @FocusState private var isFieldFocused: Bool
+
     @Binding var sliderValue: Double
     @Binding var colorOfView: Color
+    
+    @State private var textField = ""
     
     let sliderColor: Color
     
@@ -23,15 +28,23 @@ struct SliderView: View {
             Slider(value: Binding(get: { sliderValue }, set: { newValue in
                 sliderValue = newValue
                 updateColorView()
-
             }), in: 0...255)
                 .tint(sliderColor)
             TextField("", text: Binding(get: { "\(Int(sliderValue))" }, set: { value in
-                sliderValue = Double(value) ?? 0
-                updateColorView()
+                textField = value
             }))
+                .focused($focusedField, equals: getEqual())
+                .focused($isFieldFocused)
                 .textFieldStyle(.roundedBorder)
+                .cornerRadius(6)
                 .frame(width: 45)
+                .keyboardType(.numberPad)
+                .onChange(of: isFieldFocused) { isFocused in
+                    if !isFocused {
+                        sliderValue = Double(textField) ?? 0
+                        updateColorView()
+                    }
+                }
         }
     }
     
@@ -61,6 +74,17 @@ struct SliderView: View {
                 green: green,
                 blue: sliderValue / 255
             )
+        }
+    }
+    
+    private func getEqual() -> Field {
+        switch sliderColor {
+        case .red:
+            return .red
+        case . green:
+            return .green
+        default:
+            return .blue
         }
     }
 }

@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum Field: Hashable {
+    case red
+    case green
+    case blue
+}
+
 struct ContentView: View {
 
     @State private var redSliderValue = 80.0
@@ -18,6 +24,8 @@ struct ContentView: View {
         green: 150 / 255,
         blue: 230 / 255
     )
+    
+    @FocusState private var focusedField: Field?
 
     var body: some View {
         ZStack {
@@ -26,9 +34,38 @@ struct ContentView: View {
             VStack {
                 ColorView(colorOfView: $colorOfView)
                     .padding(.bottom, 30)
-                SliderView(sliderValue: $redSliderValue, colorOfView: $colorOfView, sliderColor: .red)
-                SliderView(sliderValue: $greenSliderValue, colorOfView: $colorOfView, sliderColor: .green)
-                SliderView(sliderValue: $blueSliderValue, colorOfView: $colorOfView, sliderColor: .blue)
+                SliderView(
+                    focusedField: _focusedField,
+                    sliderValue: $redSliderValue,
+                    colorOfView: $colorOfView,
+                    sliderColor: .red
+                )
+                SliderView(
+                    focusedField: _focusedField,
+                    sliderValue: $greenSliderValue,
+                    colorOfView: $colorOfView,
+                    sliderColor: .green
+                )
+                SliderView(
+                    focusedField: _focusedField,
+                    sliderValue: $blueSliderValue,
+                    colorOfView: $colorOfView,
+                    sliderColor: .blue
+                )
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Button("▲", action: {
+                            focusedField = focusedField == .green ? .red : .green
+                        })
+                            .disabled(focusedField == .red)
+                        Button("▼", action: {
+                            focusedField = focusedField == .green ? .blue : .green
+                        } )
+                            .disabled(focusedField == .blue)
+                        Spacer()
+                        Button("Done", action: { focusedField = .none })
+                    }
+                }
                 Spacer()
             }
             .padding()
