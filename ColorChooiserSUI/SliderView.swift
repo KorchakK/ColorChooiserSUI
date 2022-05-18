@@ -16,6 +16,7 @@ struct SliderView: View {
     @Binding var colorOfView: Color
     
     @State var textField = ""
+    @State private var showAlert = false
     
     let sliderColor: Color
     
@@ -49,8 +50,14 @@ struct SliderView: View {
                             updateColorView()
                         default:
                             textField = String(lround(sliderValue))
+                            showAlert = true
                         }
                     }
+                }
+                .alert("Неправильное число", isPresented: $showAlert) {
+                    Button("OK") {}
+                } message: {
+                    Text("Введите число от 0 до 255")
                 }
         }
     }
