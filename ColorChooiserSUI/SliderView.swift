@@ -41,7 +41,7 @@ struct SliderView: View {
                 .keyboardType(.numberPad)
                 .onChange(of: isFieldFocused) { isFocused in
                     if !isFocused {
-                        sliderValue = Double(textField) ?? 0
+                        sliderValue = Double(textField) ?? sliderValue
                         updateColorView()
                     }
                 }
