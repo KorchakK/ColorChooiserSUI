@@ -15,7 +15,7 @@ struct SliderView: View {
     @Binding var sliderValue: Double
     @Binding var colorOfView: Color
     
-    @State private var textField = ""
+    @State var textField = ""
     
     let sliderColor: Color
     
@@ -28,9 +28,10 @@ struct SliderView: View {
             Slider(value: Binding(get: { sliderValue }, set: { newValue in
                 sliderValue = newValue
                 updateColorView()
+                textField = String(Int(newValue))
             }), in: 0...255)
                 .tint(sliderColor)
-            TextField("", text: Binding(get: { "\(Int(sliderValue))" }, set: { value in
+            TextField("", text: Binding(get: { textField }, set: { value in
                 textField = value
             }))
                 .focused($focusedField, equals: getEqual())
@@ -41,8 +42,14 @@ struct SliderView: View {
                 .keyboardType(.numberPad)
                 .onChange(of: isFieldFocused) { isFocused in
                     if !isFocused {
-                        sliderValue = Double(textField) ?? sliderValue
-                        updateColorView()
+                        let currentValue = Double(textField) ?? sliderValue
+                        switch currentValue {
+                        case 0...255:
+                            sliderValue = currentValue
+                            updateColorView()
+                        default:
+                            textField = String(lround(sliderValue))
+                        }
                     }
                 }
         }

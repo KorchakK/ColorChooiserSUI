@@ -38,18 +38,21 @@ struct ContentView: View {
                     focusedField: _focusedField,
                     sliderValue: $redSliderValue,
                     colorOfView: $colorOfView,
+                    textField: "80",
                     sliderColor: .red
                 )
                 SliderView(
                     focusedField: _focusedField,
                     sliderValue: $greenSliderValue,
                     colorOfView: $colorOfView,
+                    textField: "150",
                     sliderColor: .green
                 )
                 SliderView(
                     focusedField: _focusedField,
                     sliderValue: $blueSliderValue,
                     colorOfView: $colorOfView,
+                    textField: "230",
                     sliderColor: .blue
                 )
                 .toolbar {
